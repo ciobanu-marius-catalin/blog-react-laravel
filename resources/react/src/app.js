@@ -1,15 +1,9 @@
 import React from "react";
-import "./style.scss";
+
+import { PageLayout } from "./layouts";
 
 const App = () => {
-    let test = 4;
-
-    let name = `${test}`;
-    return (
-        <h1>
-            <h2>React app</h2>
-        </h1>
-    );
+    return <PageLayout />;
 };
 
 export { App };

@@ -2,7 +2,6 @@ const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 
-
 function resolve(dir) {
     return path.join(__dirname, dir);
 }
@@ -12,7 +11,7 @@ module.exports = (env) => {
         entry: {
             app: {
                 import: "./resources/react/src/index.js",
-                filename: "js/app.min.js"
+                filename: "js/app.min.js",
             },
         },
         module: {
@@ -20,38 +19,38 @@ module.exports = (env) => {
                 {
                     test: /\.(js|jsx)$/,
                     exclude: /node_modules/,
-                    use: ["babel-loader"]
+                    use: ["babel-loader"],
                 },
                 {
                     test: /\.(s(a|c)ss)$/,
                     use: [
                         MiniCssExtractPlugin.loader,
                         "css-loader",
-                        "sass-loader"
-                    ]
-                }
-            ]
+                        "sass-loader",
+                    ],
+                },
+            ],
         },
         resolve: {
             alias: {
-                "@": resolve("resources/js/src")
+                "@": resolve("resources/react/src"),
             },
-            extensions: ["*", ".js", ".jsx"]
+            extensions: ["*", ".js", ".jsx"],
         },
         optimization: {
             minimize: true,
             minimizer: [
-                new TerserPlugin({ parallel: true, extractComments: false })
-            ]
+                new TerserPlugin({ parallel: true, extractComments: false }),
+            ],
         },
         plugins: [
             new MiniCssExtractPlugin({
-                filename: "css/[name].min.css"
-            })
+                filename: "css/[name].min.css",
+            }),
         ],
         output: {
             path: path.resolve(__dirname, "./public"),
-            filename: "[name].min.js"
-        }
+            filename: "[name].min.js",
+        },
     };
 };
