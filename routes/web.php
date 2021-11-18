@@ -12,11 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/{path?}', function () {
-    return view('react-home');
-})->where('path', '.*');
-
 Auth::routes();
+
+Route::get('/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
+    ->name('react')
+    ->where('path', '.*');
+
+
 //
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//

@@ -22,9 +22,10 @@ const PageLayout = () => {
 };
 
 function Sidebar() {
+    console.log("sidebar");
     const location = useLocation();
     const currentPath = location.pathname;
-    const logoutRoute = _.get(authRoutesListById, "logout");
+
     return (
         <Col xs="auto" className="gravity-dashboard-layout__sidebar text-white">
             <Navbar bg="dark" variant="dark" className="p-3">
@@ -62,22 +63,46 @@ function Sidebar() {
                             })}
                         </div>
                         <hr className="w-100" />
-                        <div className="gravity-dashboard-layout__sidebar__footer">
-                            <NavItem>
-                                <Nav.Link as={Link} to={logoutRoute.link}>
-                                    {logoutRoute.icon && (
-                                        <Icon name={logoutRoute.icon} />
-                                    )}
-                                    <span className="gravity-dashboard-layout__label">
-                                        {logoutRoute.label}
-                                    </span>
-                                </Nav.Link>
-                            </NavItem>
-                        </div>
+                        <SidebarFooter />
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
         </Col>
+    );
+}
+
+function SidebarFooter() {
+    const logoutRoute = _.get(authRoutesListById, "logout");
+    const rootUrl = _.get(window.backendData, "rootUrl");
+    const logoutUrl = `${rootUrl}/logout`;
+    const csrfToken = document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content");
+    return (
+        <div className="gravity-dashboard-layout__sidebar__footer">
+            <form id="logoutForm" action={logoutUrl} method="POST">
+                <input name="_token" value={csrfToken} type="hidden" />
+                <NavItem>
+                    <Nav.Link
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            e.preventDefault();
+                            console.log("submit");
+                            const form = document.querySelector("#logoutForm");
+                            if (!form) {
+                                return;
+                            }
+                            form.submit();
+                        }}
+                    >
+                        {logoutRoute.icon && <Icon name={logoutRoute.icon} />}
+                        <span className="gravity-dashboard-layout__label">
+                            {logoutRoute.label}
+                        </span>
+                    </Nav.Link>
+                </NavItem>
+            </form>
+        </div>
     );
 }
 

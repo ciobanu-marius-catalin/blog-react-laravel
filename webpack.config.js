@@ -14,6 +14,10 @@ module.exports = (env) => {
                 import: "./resources/react/src/index.js",
                 filename: "js/app.min.js",
             },
+            auth: {
+                import: "./resources/auth/js/app.js",
+                filename: "js/auth.min.js",
+            },
         },
         module: {
             rules: [
