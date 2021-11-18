@@ -1,25 +1,26 @@
 import { HomePage } from "./home";
 import { UsersPage } from "./users";
+import { generateLinkPrefixFunction } from "../utils";
 
-const baseLink = "dashboard";
-
-const getDashboardLink = (path) => {
-    return `${baseLink}${path}`;
-};
+const getDashboardLink = generateLinkPrefixFunction("dashboard");
 
 const dashboardRoutesList = [
     {
-        label: "Home",
+        id: "home",
+        label: "Dashboard",
         component: HomePage,
-        link: "/",
+        link: getDashboardLink("/"),
+        icon: "desktop",
         routeProps: {
             exact: true,
         },
     },
     {
+        id: "users",
         label: "Users",
+        icon: "users",
         component: UsersPage,
-        link: "/users",
+        link: getDashboardLink("/users"),
     },
 ];
 

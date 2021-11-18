@@ -1,6 +1,9 @@
 import { dashboardRoutesList } from "./dashboard";
-import _ from "lodash";
+import { authRoutesList } from "./authentification";
 
-const routesList = dashboardRoutesList;
+
+const routesList = dashboardRoutesList.concat(authRoutesList);
 
 export { routesList };
+export * from "./dashboard";
+export * from "./authentification";

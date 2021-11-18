@@ -7,6 +7,7 @@ function resolve(dir) {
 }
 
 module.exports = (env) => {
+    const inProduction = env.production;
     return {
         entry: {
             app: {
@@ -29,11 +30,20 @@ module.exports = (env) => {
                         "sass-loader",
                     ],
                 },
+                {
+                    test: /\.(ttf|eot|svg|gif|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                    use: [
+                        {
+                            loader: "file-loader",
+                        },
+                    ],
+                },
             ],
         },
+        devtool: !inProduction ? "source-map" : false,
         resolve: {
             alias: {
-                "@": resolve("resources/react/src"),
+                "@": resolve("./resources/react/src"),
             },
             extensions: ["*", ".js", ".jsx"],
         },
@@ -49,7 +59,7 @@ module.exports = (env) => {
             }),
         ],
         output: {
-            path: path.resolve(__dirname, "./public"),
+            path: resolve("./public"),
             filename: "[name].min.js",
         },
     };

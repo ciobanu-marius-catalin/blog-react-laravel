@@ -1,0 +1,60 @@
+.gravity-dashboard-layout {
+    &__container {
+        height: 100vh;
+    }
+    &__sidebar {
+        width: 300px;
+
+        .navbar {
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: #343a40 !important;
+        }
+        .navbar-nav {
+            flex-direction: column;
+            width: 100%;
+            flex: 1;
+        }
+        .navbar-collapse {
+            width: 100%;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+        .nav-link {
+            //color: white !important;
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+            &:hover:not(.active) {
+                background-color: rgba(255,255,255,.1);
+                color: #fff !important;
+            }
+        }
+        &__main-nav {
+            flex: 1;
+        }
+        @media only screen and (max-width: 600px) {
+            width: auto;
+
+            .gravity-dashboard-layout__label {
+                display: none;
+            }
+            .gravity-icon {
+                margin-right: 0;
+            }
+            .nav-link {
+                text-align: center;
+            }
+            .navbar-brand {
+                margin: 0;
+            }
+
+        }
+    }
+    &__content {
+        background: rgba(0, 0, 0, .1);
+        box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
+    }
+}
