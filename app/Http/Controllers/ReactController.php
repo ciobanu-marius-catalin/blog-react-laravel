@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReactController extends Controller
 {
@@ -23,7 +24,11 @@ class ReactController extends Controller
      */
     public function index()
     {
-        $backendData =  ['backendData' => ['rootUrl' => url('/')]];
+        $user = Auth::user();
+        $backendData =  ['backendData' => [
+            'rootUrl' => url('/'),
+            'user' => $user
+        ]];
         return view('react-home', $backendData);
     }
 }

@@ -3,10 +3,10 @@ import { LogoutPage } from "./logout";
 import { RegisterPage } from "./register";
 import _ from "lodash";
 import { generateLinkPrefixFunction } from "../utils";
+import { DashboardLayout } from "../../layouts/dashboard/index";
+const getLink = generateLinkPrefixFunction();
 
-const getLink = generateLinkPrefixFunction("dashboard");
-
-const authRoutesList = [
+let authRoutesList = [
     {
         id: "login",
         label: "Login",
@@ -16,7 +16,7 @@ const authRoutesList = [
     {
         id: "logout",
         label: "Logout",
-        icon: 'sign-out-alt',
+        icon: "sign-out-alt",
         component: LogoutPage,
         link: getLink("/logout"),
     },
@@ -27,6 +27,10 @@ const authRoutesList = [
         link: getLink("/register"),
     },
 ];
+
+authRoutesList.forEach((item) => {
+    item.layout = DashboardLayout;
+});
 
 const authRoutesListById = _.keyBy(authRoutesList, "id");
 

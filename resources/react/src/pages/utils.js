@@ -1,7 +1,6 @@
-const generateLinkPrefixFunction = (prefix) => {
+const generateLinkPrefixFunction = (prefix = "") => {
     return (link) => {
-        return link;
-        // return `${preifx}${link}`;
+        return `/${prefix}${link}`;
     };
 };
 

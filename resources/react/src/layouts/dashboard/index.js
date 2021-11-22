@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
     dashboardRoutesList,
     authRoutesList,
@@ -11,15 +11,15 @@ import { useLocation } from "react-router-dom";
 import classnames from "classnames";
 import { Icon } from "@/components";
 
-const PageLayout = () => {
+function DashboardLayout({ children }) {
     console.log("page layout test");
     return (
         <Row className={"gravity-dashboard-layout__container g-0"}>
             <Sidebar />
-            <Content />
+            <Content>{children}</Content>
         </Row>
     );
-};
+}
 
 function Sidebar() {
     console.log("sidebar");
@@ -106,27 +106,11 @@ function SidebarFooter() {
     );
 }
 
-function Content() {
-    let routes = authRoutesList.concat(dashboardRoutesList);
+function Content({ children }) {
     return (
-        <Col className="gravity-dashboard-layout__content p-3">
-            <Switch>
-                {routes.map((route) => {
-                    const PageComponent = route.component;
-                    const routeProps = _.get(route, "routeProps", {});
-                    return (
-                        <Route
-                            key={route.link}
-                            path={route.link}
-                            {...routeProps}
-                        >
-                            <PageComponent />
-                        </Route>
-                    );
-                })}
-            </Switch>
-        </Col>
+        <Col className="gravity-dashboard-layout__content p-3">{children}</Col>
     );
 }
 
-export { PageLayout };
+export { DashboardLayout };
+export default DashboardLayout;
