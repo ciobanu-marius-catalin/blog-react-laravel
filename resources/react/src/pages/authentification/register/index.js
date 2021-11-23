@@ -1,5 +1,9 @@
+import { redirectToPage } from "../utils";
+
 const RegisterPage = () => {
-    return <h1>Register Page</h1>;
+    console.log("logout");
+    redirectToPage("register");
+    return <></>;
 };
 
 export { RegisterPage };

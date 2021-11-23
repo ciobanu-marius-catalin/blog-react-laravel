@@ -1,7 +1,7 @@
 import { Route } from "react-router-dom";
 import { DashboardLayout } from "../../../layouts";
 const RouteWithLayout = ({
-                             path,
+    path,
     component: Component,
     layout: Layout = DashboardLayout,
 }) => {

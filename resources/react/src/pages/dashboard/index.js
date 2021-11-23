@@ -14,6 +14,7 @@ const dashboardRoutesList = [
         label: "Dashboard",
         component: HomePage,
         layout: DashboardLayout,
+        protected: true,
         link: getDashboardLink("/"),
         icon: "desktop",
         routeProps: {
@@ -24,6 +25,7 @@ const dashboardRoutesList = [
         id: "users",
         label: "Users",
         icon: "users",
+        protected: true,
         component: UsersPage,
         layout: DashboardLayout,
         link: getDashboardLink("/users"),

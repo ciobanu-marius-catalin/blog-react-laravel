@@ -19,9 +19,9 @@ function Header() {
         <ul>
             {routes.map((route) => {
                 return (
-                    <l1 key={route.link}>
+                    <li key={route.link}>
                         <Link to={route.link}>{route.label}</Link>
-                    </l1>
+                    </li>
                 );
             })}
         </ul>

@@ -14,10 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 Auth::routes();
 
-Route::get('/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
+Route::get('/dashboard/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
+    ->middleware('auth')
     ->name('react')
     ->where('path', '.*');
 
+Route::get('/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
+    ->name('react')
+    ->where('path', '.*');
 
 //
 //

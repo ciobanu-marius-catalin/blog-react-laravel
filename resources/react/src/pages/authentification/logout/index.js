@@ -1,5 +1,9 @@
+import { redirectToPage } from "../utils";
+
 const LogoutPage = () => {
-    return <h1>Logout Page</h1>;
+    console.log("logout");
+    redirectToPage("logout");
+    return <></>;
 };
 
 export { LogoutPage };
