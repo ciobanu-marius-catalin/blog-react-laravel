@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { frontRoutesList, dashboardRoutesById } from "../../pages";
 import _ from "lodash";
+import { ErrorHandler } from "@/core";
 
 const FrontLayout = ({ children }) => {
     return (
@@ -29,7 +30,11 @@ function Header() {
 }
 
 function Content({ children }) {
-    return <div>{children}</div>;
+    return (
+        <div>
+            <ErrorHandler>{children}</ErrorHandler>
+        </div>
+    );
 }
 
 export { FrontLayout };

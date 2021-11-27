@@ -9,6 +9,7 @@ import _ from "lodash";
 import { Container, Nav, Navbar, NavItem, Row, Col } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import classnames from "classnames";
+import { ErrorHandler } from "@/core";
 import { Icon } from "@/components";
 
 function DashboardLayout({ children }) {
@@ -108,7 +109,9 @@ function SidebarFooter() {
 
 function Content({ children }) {
     return (
-        <Col className="gravity-dashboard-layout__content p-3">{children}</Col>
+        <Col className="gravity-dashboard-layout__content p-3">
+            <ErrorHandler>{children}</ErrorHandler>
+        </Col>
     );
 }
 

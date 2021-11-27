@@ -1,2 +1,2 @@
 export * from "./icon";
-export * from "./routes";
+export * from "../core/routes";
