@@ -7,13 +7,14 @@ import _ from "lodash";
 import { store, useNamespacedDispatch, USER_MODULE } from "@/store";
 import { Provider } from "react-redux";
 import { initHeaders } from "@/core";
+import { rootUrl } from "@/utils";
 import axios from "axios";
 
 const App = () => {
     const [dataInitialized, setDataInitialized] = useState(false);
     function getUser() {
         axios
-            .get("http://blog-react-laravel/api/user")
+            .get(`${rootUrl}/api/user`)
             .then((response) => {
                 console.log("axios response", response);
             })
@@ -75,7 +76,7 @@ function DataInitialization({ dataInitialized, setDataInitialized }) {
             setDataInitialized(true);
         };
         if (!dataInitialized) {
-           initData();
+            initData();
         }
     }, []);
     return <></>;

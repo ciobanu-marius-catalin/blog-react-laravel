@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 import axios from "axios";
+import { rootUrl } from "@/utils";
 
 const UsersPage = () => {
     function getUser() {
         axios
-            .get("http://blog-react-laravel/api/user")
+            .get(`${rootUrl}/api/user`)
             .then((response) => {
                 console.log("axios response", response);
             })

@@ -25,4 +25,4 @@ function getCookie(cname) {
     return "";
 }
 
-export { getBackendData, getCookie, getRootUrl };
+export { getBackendData, getCookie, getRootUrl, rootUrl };
