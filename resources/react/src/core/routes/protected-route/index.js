@@ -4,7 +4,6 @@ import { useNamespacedSelector, USER_MODULE } from "@/store";
 const ProtectedRoute = (props) => {
     console.log("protected route");
     const { getIsLoggedIn } = useNamespacedSelector(USER_MODULE);
-    console.log(getIsLoggedIn);
     const isLoggedIn = getIsLoggedIn();
     return (
         <>

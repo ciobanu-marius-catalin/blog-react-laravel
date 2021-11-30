@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class ReactController extends Controller
 {
@@ -25,6 +26,12 @@ class ReactController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $token = null;
+        if($user) {
+
+        }
+
+
         $backendData =  ['backendData' => [
             'rootUrl' => url('/'),
             'user' => $user

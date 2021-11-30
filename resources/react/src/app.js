@@ -6,9 +6,24 @@ import { routesList } from "./pages";
 import _ from "lodash";
 import { store, useNamespacedDispatch, USER_MODULE } from "@/store";
 import { Provider } from "react-redux";
+import { initHeaders } from "@/core";
+import axios from "axios";
 
 const App = () => {
     const [dataInitialized, setDataInitialized] = useState(false);
+    function getUser() {
+        axios
+            .get("http://blog-react-laravel/api/user")
+            .then((response) => {
+                console.log("axios response", response);
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+    useEffect(() => {
+        getUser();
+    }, []);
     return (
         <Provider store={store}>
             <DataInitialization
@@ -52,10 +67,15 @@ function DataInitialization({ dataInitialized, setDataInitialized }) {
     useEffect(() => {
         const initUser = async () => {
             await init();
+        };
+
+        const initData = async () => {
+            await initHeaders();
+            await initUser();
             setDataInitialized(true);
         };
         if (!dataInitialized) {
-            initUser();
+           initData();
         }
     }, []);
     return <></>;

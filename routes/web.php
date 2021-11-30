@@ -16,12 +16,13 @@ Auth::routes();
 
 Route::get('/dashboard/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
     ->middleware('auth')
-    ->name('react')
+    ->name('dashboard')
     ->where('path', '.*');
 
 Route::get('/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
     ->name('react')
-    ->where('path', '.*');
+    //if the path contains the /api/ than let the api routes handle it. If not it's treated as a web route
+    ->where('path', '^((?!api\/).)*$');
 
 //
 //
