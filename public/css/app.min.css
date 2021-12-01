@@ -4621,8 +4621,47 @@ readers do not read off random characters that represent icons */
 /*!*************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./resources/react/src/style.scss ***!
   \*************************************************************************************************************************/
-.gravity-icon {
-  margin-right: 5px;
+.gravity-crud-table {
+  background: white;
+}
+.gravity-crud-table__action-row {
+  width: 0;
+  white-space: nowrap;
+  padding-left: 20px !important;
+  padding-right: 10px !important;
+}
+.gravity-crud-table__icon {
+  cursor: pointer;
+}
+.gravity-crud-table__icon:not(:last-child) {
+  margin-right: 10px;
+}
+.gravity-crud-table__delete {
+  color: #cc1818;
+}
+.gravity-crud-table__delete:hover {
+  color: #710d0d;
+}
+.gravity-crud-table__edit {
+  color: #0d6efd;
+}
+.gravity-crud-table__edit:hover {
+  color: #016e9e;
+}
+.gravity-crud-table__loading-column, .gravity-crud-table__empty-column {
+  height: 400px;
+}
+.gravity-crud-table__loading-column__content, .gravity-crud-table__empty-column__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+}
+.gravity-crud-table__loading-column__content .gravity-icon, .gravity-crud-table__empty-column__content .gravity-icon {
+  font-size: 40px;
+  margin-bottom: 20px;
 }
 
 .gravity-dashboard-layout__container {
@@ -4630,6 +4669,9 @@ readers do not read off random characters that represent icons */
 }
 .gravity-dashboard-layout__sidebar {
   width: 300px;
+}
+.gravity-dashboard-layout__sidebar .gravity-icon {
+  margin-right: 5px;
 }
 .gravity-dashboard-layout__sidebar .navbar {
   display: flex;

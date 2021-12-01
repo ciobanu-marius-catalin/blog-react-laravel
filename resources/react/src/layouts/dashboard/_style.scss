@@ -5,6 +5,10 @@
     &__sidebar {
         width: 300px;
 
+        .gravity-icon {
+            margin-right: 5px;
+        }
+
         .navbar {
             display: flex;
             height: 100%;

@@ -1,4 +1,5 @@
 import _ from "lodash";
+import { useLocation } from "react-router-dom";
 
 function getBackendData(path, defaultValue) {
     return _.get(window, `backendData.${path}`, defaultValue);
@@ -11,7 +12,7 @@ function getRootUrl() {
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = document.cookie;
-    console.log('get cookie');
+    console.log("get cookie");
     let ca = decodedCookie.split(";");
     for (let i = 0; i < ca.length; i++) {
         let c = ca[i];
@@ -24,5 +25,9 @@ function getCookie(cname) {
     }
     return "";
 }
+function removeDuplicateSlashes(content = "") {
+    return content.replace(/([^:]\/)\/+/g, "$1");
+}
 
-export { getBackendData, getCookie, getRootUrl, rootUrl };
+
+export { getBackendData, getCookie, getRootUrl, rootUrl, removeDuplicateSlashes };

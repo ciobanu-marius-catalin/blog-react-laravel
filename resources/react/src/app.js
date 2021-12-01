@@ -7,24 +7,10 @@ import _ from "lodash";
 import { store, useNamespacedDispatch, USER_MODULE } from "@/store";
 import { Provider } from "react-redux";
 import { initHeaders } from "@/core";
-import { rootUrl } from "@/utils";
-import axios from "axios";
 
 const App = () => {
     const [dataInitialized, setDataInitialized] = useState(false);
-    function getUser() {
-        axios
-            .get(`${rootUrl}/api/user`)
-            .then((response) => {
-                console.log("axios response", response);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }
-    useEffect(() => {
-        getUser();
-    }, []);
+
     return (
         <Provider store={store}>
             <DataInitialization
@@ -63,7 +49,6 @@ function RouteApp() {
     );
 }
 function DataInitialization({ dataInitialized, setDataInitialized }) {
-    console.log("data initizliation");
     const { init } = useNamespacedDispatch(USER_MODULE);
     useEffect(() => {
         const initUser = async () => {
