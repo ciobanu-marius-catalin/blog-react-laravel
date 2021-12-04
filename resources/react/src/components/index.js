@@ -1,3 +1,3 @@
 export * from "./icon";
 export * from "../core/routes";
-export * from "./crud-table";
+export * from "./crud-pages";

@@ -5,6 +5,9 @@ function getBackendData(path, defaultValue) {
     return _.get(window, `backendData.${path}`, defaultValue);
 }
 const rootUrl = getBackendData("rootUrl");
+
+const apiRootUrl = `${rootUrl}/api`;
+
 function getRootUrl() {
     return rootUrl;
 }
@@ -29,5 +32,11 @@ function removeDuplicateSlashes(content = "") {
     return content.replace(/([^:]\/)\/+/g, "$1");
 }
 
-
-export { getBackendData, getCookie, getRootUrl, rootUrl, removeDuplicateSlashes };
+export {
+    getBackendData,
+    getCookie,
+    getRootUrl,
+    rootUrl,
+    apiRootUrl,
+    removeDuplicateSlashes,
+};
