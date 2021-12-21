@@ -23,6 +23,7 @@ const App = () => {
 };
 
 function RouteApp() {
+    console.log("route app");
     return (
         <Router>
             <Switch>

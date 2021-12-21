@@ -5,6 +5,7 @@ import { Icon } from "../icon";
 import { DeleteModal } from "./delete-modal";
 import { CrudContext } from "./crud-context";
 import { apiRootUrl, removeDuplicateSlashes } from "@/utils";
+import { useHistory } from "react-router-dom";
 
 function TableContent({ data, columnNames, refreshPage } = {}) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
@@ -12,11 +13,24 @@ function TableContent({ data, columnNames, refreshPage } = {}) {
     const { setError, apiPath } = useContext(CrudContext);
     const location = useLocation();
     let currentRouterPath = location.pathname;
-
+    const history = useHistory();
     console.log("index");
 
     const onEdit = (item) => {
         console.log("edit", item);
+        const id = item?.id;
+
+        //let editRoute =   '/dashboard/user/edit'
+        let editRoute = `${currentRouterPath}/edit`;
+        history.push({
+            pathname: editRoute,
+            search: `?id=${id}`, // query string
+            state: {
+                // location state
+                update: true,
+            },
+        });
+        // history.push(editRoute);
     };
 
     const onDelete = (item) => {

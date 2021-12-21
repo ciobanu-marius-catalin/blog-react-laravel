@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useCallback } from "react";
 import _ from "lodash";
 
 const useDeepCompareMemoize = (value = []) => {
@@ -15,5 +15,8 @@ const useDeepMemo = (callback, dependencies) => {
     const memoisedDependencies = useDeepCompareMemoize(dependencies);
     return useMemo(callback, memoisedDependencies);
 };
-
-export { useDeepMemo };
+const useDeepCallback = (callback, dependencies) => {
+    const memoisedDependencies = useDeepCompareMemoize(dependencies);
+    return useCallback(callback, memoisedDependencies);
+};
+export { useDeepMemo, useDeepCallback };

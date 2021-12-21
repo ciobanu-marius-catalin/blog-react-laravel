@@ -44,7 +44,7 @@ module.exports = (env) => {
                 },
             ],
         },
-        devtool: !inProduction ? "source-map" : false,
+        devtool: "source-map",
         resolve: {
             alias: {
                 "@": resolve("./resources/react/src"),

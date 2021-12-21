@@ -14,7 +14,7 @@
             height: 100%;
             flex-direction: column;
             align-items: flex-start;
-            background-color: #343a40 !important;
+            background-color: #222d32 !important;
         }
         .navbar-nav {
             flex-direction: column;
@@ -58,7 +58,7 @@
         }
     }
     &__content {
-        background: rgba(0, 0, 0, .1);
+        background: #ecf0f5;
         box-shadow: inset 0 0.5em 1.5em rgb(0 0 0 / 10%), inset 0 0.125em 0.5em rgb(0 0 0 / 15%);
     }
 }

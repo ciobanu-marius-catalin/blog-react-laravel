@@ -1,14 +1,15 @@
-import { Alert, Pagination, Table } from "react-bootstrap";
+import { Alert, Button, Pagination, Table } from "react-bootstrap";
 import _ from "lodash";
 import { useEffect, useState, useRef, useContext } from "react";
 import { useDeepMemo } from "@/core";
-import { CrudContext } from "./crud-context";
+import { CrudContext, useCrudContext } from "./crud-context";
 import { CrudTablePagination } from "./crud-pagination";
 import { useFetchedData } from "./use-fetched-data";
 import { TableContent } from "./table-content";
 import { EmptyTableContent } from "./empty-table-content";
 import { LoadingTableContent } from "./loading-table-content";
 import { apiRootUrl, removeDuplicateSlashes } from "@/utils";
+import { useHistory, useLocation } from "react-router-dom";
 
 function CrudTable_({ columnNames = [], perPage = 10 } = {}) {
     const [page, setPage] = useState(1);
@@ -65,21 +66,32 @@ function CrudTable_({ columnNames = [], perPage = 10 } = {}) {
 
 function CrudTable(props = {}) {
     const { localApiPath } = props;
-    const [error, setError] = useState(null);
-    const contextValue = useDeepMemo(() => {
-        let apiPath = removeDuplicateSlashes(`${apiRootUrl}/${localApiPath}`);
-        return {
-            apiPath,
-            error,
-            setError,
-        };
-    }, [localApiPath, error, setError]);
 
+    const contextValue = useCrudContext(localApiPath);
+
+    const location = useLocation();
+    let currentRouterPath = location.pathname;
+    const history = useHistory();
+    const onAdd = () => {
+        //let editRoute =   '/dashboard/user/edit'
+        let addRoute = `${currentRouterPath}/add`;
+        history.push(addRoute);
+    };
     return (
         <CrudContext.Provider value={contextValue}>
-            <CrudTable_ {...props} />
+            <div className="gravity-crud-table__container">
+                <Button
+                    className="gravity-crud-table__add-button"
+                    onClick={onAdd}
+                >
+                    Add item
+                </Button>
+                <CrudTable_ {...props} />
+            </div>
         </CrudContext.Provider>
     );
 }
 
+export * from "./form";
+export * from "./edit-page";
 export { CrudTable };

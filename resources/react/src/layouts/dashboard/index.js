@@ -21,6 +21,9 @@ function DashboardLayout({ children }) {
         </Row>
     );
 }
+let routes = dashboardRoutesList.filter((route) => !route.hidden);
+
+console.log("routes");
 
 function Sidebar() {
     console.log("sidebar");
@@ -41,7 +44,7 @@ function Sidebar() {
                                 "gravity-dashboard-layout__sidebar__main-nav"
                             }
                         >
-                            {dashboardRoutesList.map((route) => {
+                            {routes.map((route) => {
                                 const isActive = currentPath === route.link;
                                 return (
                                     <NavItem key={route.link}>

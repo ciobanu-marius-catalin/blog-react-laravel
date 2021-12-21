@@ -31,9 +31,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
     }
 
     /**
@@ -44,7 +44,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+       $user = User::create($request->all());
+
+        return response()->json($user, 200);
     }
 
     /**
@@ -76,9 +83,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+        ]);
+
+        $user->update($request->all());
+
+        return response()->json($user, 200);
     }
 
     /**

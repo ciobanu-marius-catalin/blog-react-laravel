@@ -5,4 +5,6 @@ const UsersPage = () => {
     return <CrudTable localApiPath="/users" columnNames={columnNames} />;
 };
 
+export * from "./edit";
+export * from "./add";
 export { UsersPage };

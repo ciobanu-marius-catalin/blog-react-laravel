@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
-import { frontRoutesList, dashboardRoutesById } from "../../pages";
+import {
+    frontRoutesList,
+    dashboardRoutesById,
+    dashboardRoutesList,
+} from "../../pages";
 import _ from "lodash";
 import { ErrorHandler } from "@/core";
 
@@ -13,9 +17,11 @@ const FrontLayout = ({ children }) => {
     );
 };
 
+
 function Header() {
     let routes = _.cloneDeep(frontRoutesList);
     routes.push(dashboardRoutesById.home);
+    routes = routes.filter((route) => !route.hidden);
     return (
         <ul>
             {routes.map((route) => {
