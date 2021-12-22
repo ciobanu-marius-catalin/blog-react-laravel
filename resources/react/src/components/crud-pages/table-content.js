@@ -3,14 +3,16 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Icon } from "../icon";
 import { DeleteModal } from "./delete-modal";
-import { CrudContext } from "./crud-context";
+import { useCrudContext } from "./crud-context";
 import { apiRootUrl, removeDuplicateSlashes } from "@/utils";
 import { useHistory } from "react-router-dom";
+import { useErrorContext } from "@/core";
 
 function TableContent({ data, columnNames, refreshPage } = {}) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
     const [deleteModalItem, setDeleteModalItem] = useState(null);
-    const { setError, apiPath } = useContext(CrudContext);
+    const { apiPath } = useCrudContext();
+    const { setError } = useErrorContext();
     const location = useLocation();
     let currentRouterPath = location.pathname;
     const history = useHistory();

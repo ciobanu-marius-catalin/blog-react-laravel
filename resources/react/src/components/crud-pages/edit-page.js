@@ -1,9 +1,7 @@
-import {CrudForm} from './form'
+import { CrudForm } from "./form";
 
 function EditPage(props) {
-    return <div>
-        <CrudForm {...props}/>
-    </div>
+    return <CrudForm {...props} />;
 }
 
 export { EditPage };

@@ -1,20 +1,18 @@
 import { Alert, Button, Pagination, Table } from "react-bootstrap";
 import _ from "lodash";
 import { useEffect, useState, useRef, useContext } from "react";
-import { useDeepMemo } from "@/core";
-import { CrudContext, useCrudContext } from "./crud-context";
+import { CrudContext, useCrudContextValue } from "./crud-context";
 import { CrudTablePagination } from "./crud-pagination";
 import { useFetchedData } from "./use-fetched-data";
 import { TableContent } from "./table-content";
 import { EmptyTableContent } from "./empty-table-content";
 import { LoadingTableContent } from "./loading-table-content";
-import { apiRootUrl, removeDuplicateSlashes } from "@/utils";
 import { useHistory, useLocation } from "react-router-dom";
+import { useErrorContext } from "@/core";
 
 function CrudTable_({ columnNames = [], perPage = 10 } = {}) {
     const [page, setPage] = useState(1);
-    const { error, setError } = useContext(CrudContext);
-
+    const { error } = useErrorContext();
     let { data, nrOfPages, isLoading, refreshPage } = useFetchedData({
         columnNames,
         page,
@@ -23,12 +21,6 @@ function CrudTable_({ columnNames = [], perPage = 10 } = {}) {
 
     let Content;
     console.log("crud page index");
-    //remove errors on page change
-    useEffect(() => {
-        if (error) {
-            setError(null);
-        }
-    }, [page]);
 
     if (isLoading) {
         Content = LoadingTableContent;
@@ -40,7 +32,11 @@ function CrudTable_({ columnNames = [], perPage = 10 } = {}) {
 
     return (
         <>
-            {error && <Alert variant="danger">{error}</Alert>}
+            {error && (
+                <Alert className="w-100" variant="danger">
+                    {error}
+                </Alert>
+            )}
             <Table className="gravity-crud-table" striped bordered hover>
                 <thead>
                     <tr>
@@ -67,7 +63,7 @@ function CrudTable_({ columnNames = [], perPage = 10 } = {}) {
 function CrudTable(props = {}) {
     const { localApiPath } = props;
 
-    const contextValue = useCrudContext(localApiPath);
+    const contextValue = useCrudContextValue(localApiPath);
 
     const location = useLocation();
     let currentRouterPath = location.pathname;

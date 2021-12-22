@@ -22,6 +22,7 @@ const UsersPageEdit = () => {
         <UsersPageForm
             settings={editSettings}
             localApiPath={localApiPath}
+            loadData={true}
             method={"put"}
         />
     );

@@ -1,18 +1,20 @@
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { CrudContext } from "./crud-context";
+import { useCrudContext } from "./crud-context";
 import _ from "lodash";
+import { useErrorContext } from "@/core";
 
 function useFetchedData({ columnNames = [], perPage = 10, page = 1 }) {
     let [data, setData] = useState([]);
     let [isLoading, setIsLoading] = useState(true);
     let [nrOfPages, setNrOfPages] = useState(0);
-    const { setError, apiPath } = useContext(CrudContext);
+    const { setError } = useErrorContext();
+    const { apiPath } = useCrudContext();
     async function fetchData() {
         setIsLoading(true);
         try {
             console.log("use fetched data");
-            let fetchResult = await axios.get(apiPath, {
+            let fetchResult = await axios.get(apiPath , {
                 params: {
                     perPage,
                     page,
