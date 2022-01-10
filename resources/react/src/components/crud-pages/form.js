@@ -25,7 +25,12 @@ import { ErrorContext } from "../../core";
 const CrudForm_ = (props) => {
     console.log("crud form");
     const [submitted, setSubmitted] = useState(false);
-    const { settings = [], method = "post", loadData } = props;
+    const {
+        settings = [],
+        method = "post",
+        loadData,
+        onBeforeSubmit = _.noop,
+    } = props;
     const { apiPath } = useCrudContext();
     const { error, setError, errorsList } = useErrorContext();
     const history = useHistory();
@@ -86,11 +91,13 @@ const CrudForm_ = (props) => {
         console.log("on submit");
         let path = `${apiPath}`;
 
+        let data = onBeforeSubmit(_.cloneDeep(formData));
+
         try {
             let response = await axios({
                 method: method,
                 url: path,
-                data: formData,
+                data: data,
             });
             history.push(apiPath);
         } catch (error) {
