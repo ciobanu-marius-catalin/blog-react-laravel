@@ -1,0 +1,20 @@
+.error-page {
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    &__code {
+        font-weight: bold;
+        font-size: 7rem;
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 26px;
+    }
+
+    &__description {
+        font-size: 13px;
+    }
+}

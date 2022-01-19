@@ -1,8 +1,8 @@
 import React from "react";
 import { NotFound } from "./404";
+import { ErrorPage } from "./error-page";
 import { generateLinkPrefixFunction } from "../utils";
 import { FrontLayout } from "../../layouts/front";
-
 
 const systemRoutesList = [
     {

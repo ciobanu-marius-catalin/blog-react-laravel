@@ -1,0 +1,17 @@
+.gravity-front-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+
+    &__top-bar a {
+        color: white;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    &__navigation {
+        border-bottom: 1px solid rgb(237, 242, 249);
+    }
+    *:not(.fas):not(.fa) {
+        font-family: 'Roboto', sans-serif;
+    }
+}

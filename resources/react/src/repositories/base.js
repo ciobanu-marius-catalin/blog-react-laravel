@@ -1,0 +1,8 @@
+class BaseRepository {
+
+    getById(id) {
+
+    }
+
+
+}

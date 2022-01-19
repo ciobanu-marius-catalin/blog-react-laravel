@@ -1,0 +1,45 @@
+.gravity-post-item {
+    overflow: hidden;
+    cursor: pointer;
+
+    > a {
+        text-decoration: none;
+    }
+
+    &__image-outer {
+        position: relative;
+        //16:9 aspect ratio
+        padding-top: 56.25%;
+    }
+    &__image-aspect-ratio {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+    }
+    img {
+        transition: transform 0.5s linear;
+        width: 100%;
+        height: 100%;
+    }
+    &__title {
+        font-weight: 600;
+        line-height: 1.23em;
+        color: rgb(29, 25, 41);
+        margin-bottom: 0px;
+        padding: 14px 0px 6px;
+        font-size: 22px;
+    }
+    &__description {
+        font-size: 16px;
+        line-height: 1.8em;
+        color: rgba(0, 0, 0, 0.8);
+    }
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+    }
+}

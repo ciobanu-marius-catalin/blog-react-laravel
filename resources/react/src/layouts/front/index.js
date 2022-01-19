@@ -1,46 +1,75 @@
 import { Link } from "react-router-dom";
-import {
-    frontRoutesList,
-    dashboardRoutesById,
-    dashboardRoutesList,
-} from "../../pages";
-import _ from "lodash";
 import { ErrorHandler } from "@/core";
+import { Navbar, Container, Nav } from "react-bootstrap";
 
 const FrontLayout = ({ children }) => {
     return (
-        <div>
-            <h1>Front layout</h1>
+        <div className="gravity-front-layout">
             <Header />
             <Content>{children}</Content>
         </div>
     );
 };
-
-
-function Header() {
-    let routes = _.cloneDeep(frontRoutesList);
-    routes.push(dashboardRoutesById.home);
-    routes = routes.filter((route) => !route.hidden);
+function TopBar() {
     return (
-        <ul>
-            {routes.map((route) => {
-                return (
-                    <li key={route.link}>
-                        <Link to={route.link}>{route.label}</Link>
-                    </li>
-                );
-            })}
-        </ul>
+        <Navbar className="gravity-front-layout__top-bar" bg="dark">
+            <div className="d-flex justify-content-between w-100">
+                <Nav.Link as={Link} to="/dashboard">
+                    Dashboard
+                </Nav.Link>
+                <UserMenu />
+            </div>
+        </Navbar>
+    );
+}
+
+function Navigation() {
+    return (
+        <Navbar className="gravity-front-layout__navigation">
+            <Container>
+                <Navbar.Brand as={Link} to="/">
+                    Blog
+                </Navbar.Brand>
+                <Navbar.Toggle />
+                <Navbar.Collapse className="justify-content-end">
+                    <Nav>
+                        <Nav.Link as={Link} to="/">
+                            Blog
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="https://google.com">
+                            About
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="https://google.com">
+                            Contact
+                        </Nav.Link>
+                        <Nav.Link as={Link} to="/login">
+                            Login
+                        </Nav.Link>
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
+}
+function Header() {
+    return (
+        <>
+            <TopBar />
+            <Navigation />
+        </>
+    );
+}
+
+function UserMenu() {
+    return (
+        <Nav.Link as={Link} to="/dashboard">
+            Admin
+        </Nav.Link>
     );
 }
 
 function Content({ children }) {
-    return (
-        <div>
-            <ErrorHandler>{children}</ErrorHandler>
-        </div>
-    );
+    return <>{children}</>;
 }
 
 export { FrontLayout };

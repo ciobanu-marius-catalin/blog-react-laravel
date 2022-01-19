@@ -9,6 +9,7 @@ function ErrorHandler({ children }) {
 }
 
 function ErrorFallback({ error, resetErrorBoundary }) {
+    console.log("error fallback");
     return (
         <Alert variant="danger">
             <p>Something went wrong:</p>

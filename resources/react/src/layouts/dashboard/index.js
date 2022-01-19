@@ -112,9 +112,7 @@ function SidebarFooter() {
 
 function Content({ children }) {
     return (
-        <Col className="gravity-dashboard-layout__content p-3">
-            <ErrorHandler>{children}</ErrorHandler>
-        </Col>
+        <Col className="gravity-dashboard-layout__content p-3">{children}</Col>
     );
 }
 
