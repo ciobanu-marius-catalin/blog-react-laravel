@@ -3,11 +3,14 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import _ from "lodash";
+import moment from "moment";
 
 function PostPage() {
     const { data } = useFetchData();
 
     const { featured_image: url, content, title, created_at } = data;
+
+    const dateFormat = moment(created_at).format("MMMM DD, YYYY");
 
     return (
         <Container>
@@ -16,7 +19,7 @@ function PostPage() {
                     <div className="gravity-post-page">
                         <div className="px-md-4">
                             <div className="gravity-post-page__date">
-                                {"Published " + created_at}
+                                {"Published " + dateFormat}
                             </div>
 
                             <h1 className="gravity-post-page__title">
@@ -25,7 +28,7 @@ function PostPage() {
                         </div>
 
                         <div className="gravity-post-page__image">
-                            <img src={url} alt="featured-image" />
+                            <img src={url} alt="featured-image" loading="lazy"/>
                         </div>
 
                         <p className="gravity-post-page__content px-md-4">

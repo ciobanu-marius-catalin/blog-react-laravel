@@ -19,6 +19,7 @@ class PostFactory extends Factory
             'content' => $this->faker->text(4000),
             //used this faker library for random images: https://github.com/morawskim/faker-images.
             'featured_image' =>  $this->faker->picsumStaticRandomUrl(1920,1080),
+            'thumbnail' =>  $this->faker->picsumStaticRandomUrl(640 ,360),
             'description' => $this->faker->sentence(),
             'author_id' => 1
         ];

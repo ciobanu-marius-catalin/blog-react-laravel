@@ -44,5 +44,7 @@
         "terser-webpack-plugin": "^5.2.5",
         "webpack": "^5.64.0"
     },
-    "dependencies": {}
+    "dependencies": {
+        "moment": "^2.29.1"
+    }
 }

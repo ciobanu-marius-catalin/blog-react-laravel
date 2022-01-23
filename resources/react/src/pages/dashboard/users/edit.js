@@ -17,7 +17,7 @@ const UsersPageEdit = () => {
         id = urlSearchParams.get("id");
     } catch (e) {}
 
-    let localApiPath = `/users/${id}`;
+    let localApiPath = `/admin/users/${id}`;
     return (
         <UsersPageForm
             settings={editSettings}

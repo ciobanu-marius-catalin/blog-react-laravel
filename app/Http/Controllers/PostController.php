@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         $page = $request->input('page', 1);
         $perPage = $request->input('perPage', 10);
-gdfgfd
+
         $users = Post::latest()->paginate($perPage);
         $serializedData = $users->toArray();
         $result = [

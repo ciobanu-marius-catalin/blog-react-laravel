@@ -3,24 +3,32 @@ import axios from "axios";
 import _ from "lodash";
 import { Container, Row } from "react-bootstrap";
 import { Post } from "./post";
-import {
+import { useErrorContext } from "@/core";
 
-    useErrorContext,
-} from "@/core";
+const placeholderItems = Array(9).fill({
+    isPlaceholder: true,
+});
+
 function PostList() {
     console.log("post list");
     const [page, setPage] = useState(1);
-    const {  setError } = useErrorContext();
+    const { setError } = useErrorContext();
     let { data, nrOfPages, isLoading } = useFetchData({
         setError,
 
         page,
     });
 
+    let items = data;
+    if (_.isEmpty(data)) {
+        console.log("post-list if");
+        items = placeholderItems;
+    }
+
     return (
         <Container>
             <Row>
-                {data.map((post, index) => {
+                {items.map((post, index) => {
                     return <Post key={index} data={post} />;
                 })}
             </Row>
@@ -72,5 +80,7 @@ function useFetchData({ setError, perPage = 9, page = 1 }) {
 
     return { data, nrOfPages, isLoading };
 }
+
+function PlaceholderData() {}
 
 export { PostList };

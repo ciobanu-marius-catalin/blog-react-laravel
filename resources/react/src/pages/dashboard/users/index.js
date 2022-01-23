@@ -2,7 +2,7 @@ import { CrudTable } from "@/components";
 
 const UsersPage = () => {
     let columnNames = ["id", "name", "email", "role"];
-    return <CrudTable localApiPath="/users" columnNames={columnNames} />;
+    return <CrudTable localApiPath="/admin/users" columnNames={columnNames} />;
 };
 
 export * from "./edit";

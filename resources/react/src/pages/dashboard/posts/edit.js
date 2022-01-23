@@ -13,7 +13,7 @@ const PostsPageEdit = () => {
         id = urlSearchParams.get("id");
     } catch (e) {}
 
-    let localApiPath = `/posts/${id}`;
+    let localApiPath = `/admin/posts/${id}`;
     return (
         <PostsPageForm
             settings={editSettings}
