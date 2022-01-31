@@ -2,11 +2,9 @@
     overflow: hidden;
     cursor: pointer;
 
-    $title-spacing: 14px 0px 6px;
     > a {
         text-decoration: none;
     }
-
 
     &__image-outer {
         position: relative;
@@ -31,8 +29,8 @@
         font-weight: 600;
         line-height: 1.23em;
         color: rgb(29, 25, 41);
-        margin-bottom: 0px;
-        padding: $title-spacing;
+        margin-top: 14px;
+        margin-bottom: 6px;
         font-size: 22px;
     }
     &__description {
@@ -52,15 +50,17 @@
             &__title {
                 height: 27px;
                 background: $textPlaceholderColor;
-                box-sizing: content-box;
-                padding: 0;
-                margin: $title-spacing;
             }
             &__description {
                 height: 28px;
                 background: $textPlaceholderColor;
-
             }
         }
+    }
+}
+.post-list-page {
+    .infinite-scroll-component {
+        display: flex;
+        flex-wrap: wrap;
     }
 }

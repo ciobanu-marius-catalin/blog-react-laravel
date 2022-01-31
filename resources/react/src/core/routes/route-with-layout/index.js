@@ -5,6 +5,8 @@ import { ErrorHandler } from "@/core";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { ErrorPage } from "../../../pages/system/error-page";
+import { useLocation } from "react-router-dom";
+
 
 const RouteWithLayout = ({
     path,
@@ -15,7 +17,12 @@ const RouteWithLayout = ({
     const [showErrorPage, setShowErrorPage] = useState(false);
     let history = useHistory();
     const contextValue = useErrorContextValue();
+    const { pathname } = useLocation();
 
+    console.log('layout');
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
     useEffect(() => {
         let errorCode = contextValue?.errorCode;
         switch (errorCode) {
