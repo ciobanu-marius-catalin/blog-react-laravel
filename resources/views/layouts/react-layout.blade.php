@@ -10,7 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.min.js') }}" defer></script>
+    <script src="{{ asset('js/app.min.js?') . '?v=' .  env('APP_VERSION')}}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
     <!-- Styles -->
-    <link href="{{ asset('css/app.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.min.css') . '?v=' .  env('APP_VERSION')}}" rel="stylesheet">
 </head>
 <body>
 @yield('content')
