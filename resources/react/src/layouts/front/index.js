@@ -36,10 +36,10 @@ function Navigation() {
                         <Nav.Link as={Link} to="/">
                             Blog
                         </Nav.Link>
-                        <Nav.Link as={Link} to="https://catalinciobanu.com/#about-me">
+                        <Nav.Link href="https://catalinciobanu.com/#about-me" target="_blank">
                             About
                         </Nav.Link>
-                        <Nav.Link as={Link} to="https://catalinciobanu.com/#contact">
+                        <Nav.Link href="https://catalinciobanu.com/#contact" target="_blank">
                             Contact
                         </Nav.Link>
                         <Nav.Link as={Link} to="/login">
