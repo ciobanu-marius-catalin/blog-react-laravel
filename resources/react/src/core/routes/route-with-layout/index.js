@@ -20,9 +20,9 @@ const RouteWithLayout = ({
     const { pathname } = useLocation();
 
     console.log('layout');
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [pathname]);
+    // useEffect(() => {
+    //     window.scrollTo(0, 0);
+    // }, [pathname]);
     useEffect(() => {
         let errorCode = contextValue?.errorCode;
         switch (errorCode) {
