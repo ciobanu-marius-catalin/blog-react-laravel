@@ -42,9 +42,9 @@ function Navigation() {
                         <Nav.Link href="https://catalinciobanu.com/#contact" target="_blank">
                             Contact
                         </Nav.Link>
-                        <Nav.Link as={Link} to="/login">
-                            Login
-                        </Nav.Link>
+                        {/*<Nav.Link as={Link} to="/login">*/}
+                        {/*    Login*/}
+                        {/*</Nav.Link>*/}
                     </Nav>
                 </Navbar.Collapse>
             </Container>
