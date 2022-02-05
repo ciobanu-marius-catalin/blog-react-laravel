@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
+//Auth::routes();
 
 Route::get('/dashboard/{path?}', [App\Http\Controllers\ReactController::class, 'index'])
     ->middleware('auth')
