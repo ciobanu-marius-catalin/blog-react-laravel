@@ -26,7 +26,7 @@ const HomePage = () => {
                     </span>
                 </p>
                 <div className="gravity-front-page__search">
-                    <SearchInput placeholder="Search for posts" />
+                    {/*<SearchInput placeholder="Search for posts" />*/}
                 </div>
             </div>
             <PostList />
