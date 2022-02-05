@@ -7,25 +7,25 @@ import { FrontLayout } from "../../layouts/front/index";
 const getLink = generateLinkPrefixFunction();
 
 let authRoutesList = [
-    {
-        id: "login",
-        label: "Login",
-        component: LoginPage,
-        link: getLink("login"),
-    },
-    {
-        id: "logout",
-        label: "Logout",
-        icon: "sign-out-alt",
-        component: LogoutPage,
-        link: getLink("logout"),
-    },
-    {
-        id: "register",
-        label: "Register",
-        component: RegisterPage,
-        link: getLink("register"),
-    },
+    // {
+    //     id: "login",
+    //     label: "Login",
+    //     component: LoginPage,
+    //     link: getLink("login"),
+    // },
+    // {
+    //     id: "logout",
+    //     label: "Logout",
+    //     icon: "sign-out-alt",
+    //     component: LogoutPage,
+    //     link: getLink("logout"),
+    // },
+    // {
+    //     id: "register",
+    //     label: "Register",
+    //     component: RegisterPage,
+    //     link: getLink("register"),
+    // },
 ];
 
 console.log("auth");
